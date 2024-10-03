@@ -1,0 +1,34 @@
+.menu {
+    background-color: #f8f9fa; /* Màu nền của menu */
+    border: 1px solid #ddd; /* Viền của menu */
+    width: 200px; /* Chiều rộng của menu */
+    padding: 10px; /* Khoảng cách bên trong menu */
+    border-radius: 5px; /* Bo góc của menu */
+}
+
+.menu ol {
+    list-style-type: none; /* Loại bỏ dấu chấm đầu dòng */
+    padding: 0; /* Loại bỏ khoảng cách bên trong */
+    margin: 0; /* Loại bỏ khoảng cách bên ngoài */
+}
+
+.menu li {
+    padding: 10px; /* Khoảng cách bên trong mỗi mục */
+    margin-bottom: 5px; /* Khoảng cách dưới mỗi mục */
+    background-color: #ffffff; /* Màu nền của mỗi mục */
+    border: 1px solid #ddd; /* Viền của mỗi mục */
+    border-radius: 3px; /* Bo góc của mỗi mục */
+    cursor: pointer; /* Thay đổi con trỏ khi di chuột qua */
+}
+
+.menu li:hover {
+    background-color: gray;
+}
+
+.menu a {
+    width: 100%; /* Giúp thẻ a chiếm toàn bộ chiều rộng của li */
+    display: block; /* Đảm bảo thẻ a là khối block */
+}
+.menu a:hover {
+    color: #ddd !important;
+}

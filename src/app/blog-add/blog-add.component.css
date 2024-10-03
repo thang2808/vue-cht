@@ -1,0 +1,76 @@
+.add-blog {
+  max-width: 600px;
+  margin: 20px auto; /* Căn giữa và thêm khoảng cách */
+  padding: 20px; /* Thêm khoảng cách bên trong */
+  border: 1px solid #ccc; /* Đường viền xung quanh */
+  border-radius: 8px; /* Bo góc */
+  background-color: #f9f9f9; /* Màu nền */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ */
+}
+
+.add-blog h2 {
+  text-align: center; /* Căn giữa tiêu đề */
+  color: #333; /* Màu chữ */
+}
+
+.add-blog div {
+  margin-bottom: 20px; /* Khoảng cách giữa các phần tử */
+}
+
+.add-blog label {
+  display: block; /* Hiển thị nhãn như một khối */
+  margin-bottom: 8px; /* Khoảng cách bên dưới nhãn */
+  font-size: 16px; /* Tăng kích thước chữ */
+}
+
+.add-blog input, 
+.add-blog select, 
+.add-blog textarea {
+  width: 100%; /* Chiều rộng 100% */
+  padding: 12px; /* Khoảng cách bên trong */
+  box-sizing: border-box; /* Tính chiều rộng và chiều cao bao gồm padding */
+  border: 1px solid #ccc; /* Đường viền */
+  border-radius: 4px; /* Bo góc */
+  font-size: 16px; /* Tăng kích thước chữ */
+}
+
+.add-blog textarea {
+  resize: vertical; /* Cho phép thay đổi kích thước theo chiều dọc */
+}
+
+.add-blog button {
+  background-color: #1E90FF; /* Màu xanh nước biển */
+  color: white; /* Màu chữ trắng */
+  border: none; /* Không có viền */
+  padding: 12px 24px; /* Khoảng cách bên trong */
+  margin: 5px; /* Khoảng cách xung quanh nút */
+  cursor: pointer; /* Con trỏ tay khi hover */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu */
+  font-size: 16px; /* Tăng kích thước chữ */
+}
+
+.add-blog button:hover {
+  background-color: #32CD32; /* Màu xanh lá cây khi hover */
+}
+
+.add-blog .public-options {
+  display: flex; /* Hiển thị linh hoạt */
+  flex-direction: column; /* Xếp theo chiều dọc */
+  margin-top: 10px; /* Khoảng cách bên trên */
+}
+
+.add-blog .public-options label {
+  margin-right: 0; /* Xóa khoảng cách bên phải */
+  margin-bottom: 5px; /* Khoảng cách bên dưới */
+}
+
+.add-blog .public-options input[type="radio"] {
+  margin-right: 5px; /* Khoảng cách bên phải radio */
+}
+
+.button-container {
+  display: flex; /* Hiển thị linh hoạt */
+  justify-content: center; /* Căn giữa các nút */
+  width: 100%; /* Chiều rộng 100% */
+  margin-top: 20px; /* Khoảng cách bên trên */
+}

@@ -1,0 +1,58 @@
+<div *ngIf="blog" class="edit-blog">
+  <h2>Edit Blogs</h2>
+  <form (ngSubmit)="save()">
+    <div>
+      <label for="title"><h5>Tiêu đề</h5></label>
+      <input type="text" id="title" [(ngModel)]="blog.title" name="title">
+    </div>
+    <div>
+      <label for="des"><h5>Mô tả ngắn</h5></label>
+      <textarea id="des" [(ngModel)]="blog.des" name="des"></textarea>
+    </div>
+    <div>
+      <label for="detail"><h5>Chi tiết</h5></label>
+      <textarea id="detail" [(ngModel)]="blog.detail" name="detail"></textarea>
+    </div>
+    <div>
+      <label for="thumbs"><h5>Hình ảnh</h5></label>
+      <input type="file" id="thumbs" (change)="onFileSelected($event)">
+    </div>
+    <div>
+      <label for="category"><h5>Loại</h5></label>
+      <select id="category" [(ngModel)]="blog.category" name="category">
+        <option value="Thời sự">Thời sự</option>
+        <option value="Thế giới">Thế giới</option>
+        <option value="Kinh doanh">Kinh doanh</option>
+        <option value="Giải trí">Giải trí</option>
+        <option value="Thể thao">Thể thao</option>
+        <option value="Pháp luật">Pháp luật</option>
+      </select>
+    </div>
+    <div>
+      <label for="position"><h5>Vị Trí</h5></label>
+      <select id="position" [(ngModel)]="blog.position" name="position">
+        <option value="Việt Nam">Việt Nam</option>
+        <option value="Châu Á">Châu Á</option>
+        <option value="Châu Âu">Châu Âu</option>
+        <option value="Châu Mỹ">Châu Mỹ</option>
+      </select>
+    </div>
+    <div>
+      <label for="public"><h5>Public</h5></label>
+      <div class="public-options">
+        <label for="publicYes">Yes</label>
+        <input type="radio" id="publicYes" [(ngModel)]="blog.public" name="public" [value]="true">
+        <label for="publicNo">No</label>
+        <input type="radio" id="publicNo" [(ngModel)]="blog.public" name="public" [value]="false">
+      </div>
+    </div>
+    <div>
+      <label for="data_pubblic"><h5>Ngày Đăng</h5></label>
+      <input type="date" id="data_pubblic" [(ngModel)]="blog.data_pubblic" name="data_pubblic">
+    </div> 
+    <div class="button-container">
+      <button type="submit">Lưu</button>
+      <button type="button" (click)="clearForm()">Clear</button>
+    </div>
+  </form>
+</div>

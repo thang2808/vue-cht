@@ -1,0 +1,23 @@
+.detail {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detail h2 {
+    color: #009879;
+    margin-bottom: 15px;
+  }
+  
+  .detail p {
+    margin: 10px 0;
+    line-height: 1.6;
+  }
+  
+  .detail p strong {
+    color: #333;
+  }
+  
