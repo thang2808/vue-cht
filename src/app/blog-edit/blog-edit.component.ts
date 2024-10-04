@@ -68,7 +68,23 @@ export class BlogEditComponent implements OnInit {
       return;
     }
 
-    this.blogService.updateBlog(this.blogForm.value).subscribe(() => this.goBack());
+      // Tạo đối tượng blog mới từ form
+    const updatedBlog: Blog = {
+      ...this.blog,
+      ...this.blogForm.value,
+      thumbs: this.blog.thumbs // Nếu bạn muốn giữ nguyên hình ảnh đã tải lên
+    };
+
+      // Gọi phương thức updateBlog
+    this.blogService.updateBlog(updatedBlog).subscribe(
+      () => {
+        this.goBack();
+      },
+      error => {
+        console.error('Lỗi cập nhật blog:', error);
+        alert('Cập nhật blog không thành công!');
+      }
+    );
   }
 
   goBack(): void {
