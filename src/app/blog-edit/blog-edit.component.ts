@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Blog } from '../../models/blog';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { BlogService } from '../blog.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-blog-edit',
@@ -15,11 +16,26 @@ export class BlogEditComponent implements OnInit {
   selectedFile: File = null;
   // Luu tru trang thai ban dau
   originalBlog: Blog;
+  blogForm: FormGroup;
+
+  @ViewChild('fileInput') fileInput: ElementRef; // Tham chiếu đến input file
   constructor(
     private route: ActivatedRoute,
     private blogService: BlogService,
-    private location: Location
-  ) { }
+    private location: Location,
+    private fb: FormBuilder
+  ) { 
+    this.blogForm = this.fb.group({
+      title: ['', Validators.required],
+      des: ['', Validators.required],
+      detail: ['', Validators.required],
+      category: [''],
+      public: [''],
+      data_pubblic: [''],
+      position: [''],
+      thumbs: ['']
+    });
+  }
 
   ngOnInit() {
     this.getBlogFromRouter();
@@ -28,7 +44,12 @@ export class BlogEditComponent implements OnInit {
   getBlogFromRouter(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(`this.route.snapshot.paramMap = ${JSON.stringify(this.route.snapshot.paramMap)}`);
-    this.blogService.getBlogFromId(id).subscribe(blog => this.blog = blog);
+    this.blogService.getBlogFromId(id).subscribe(blog => 
+      {
+        this.blog = { ...blog};
+        this.originalBlog = { ...blog};
+        this.blogForm.patchValue(this.blog); 
+      });
   }
 
   onFileSelected(event): void {
@@ -41,7 +62,13 @@ export class BlogEditComponent implements OnInit {
   }
 
   save(): void {
-    this.blogService.updateBlog(this.blog).subscribe(() => this.goBack());
+    // Kiểm tra các trường bắt buộc
+    if (this.blogForm.invalid) {
+      alert('Vui lòng điền đầy đủ các trường bắt buộc.');
+      return;
+    }
+
+    this.blogService.updateBlog(this.blogForm.value).subscribe(() => this.goBack());
   }
 
   goBack(): void {
@@ -49,6 +76,15 @@ export class BlogEditComponent implements OnInit {
   }
 
   clearForm(): void {
-    this.blog = { ...this.originalBlog }; 
+    // Khôi phục lại trạng thái ban đầu của blog
+    this.blog = { ...this.originalBlog };
+
+    // Xóa tệp đã chọn
+    this.selectedFile = null;
+
+    // Đặt lại phần tử input file
+    if (this.fileInput) {
+      this.fileInput.nativeElement.value = '';
+    }
   }
 }

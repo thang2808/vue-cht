@@ -1,7 +1,14 @@
-<div *ngIf="blog" class="detail">
-  <h2>{{ blog.title }}</h2>
-  <p><strong>Mô Tả:</strong> {{ blog.des }}</p>
-  <p><strong>Chi Tiết:</strong> {{ blog.detail }}</p>
-  <p><strong>Ngày Đăng:</strong> {{ blog.data_pubblic }}</p>
-  <p><strong>Vị Trí:</strong> {{ blog.position }}</p>
+<div class="container">
+  <div class="menu">
+    <app-app-menu></app-app-menu>
+  </div>  
+  <div *ngIf="blog" class="content">
+    <h2>{{ blog.title }}</h2>
+    <img src="{{blog.thumbs}}" alt="">
+    <h5>{{ blog.des }}</h5>
+    <p> {{ blog.detail }}</p>
+    <p><strong>Ngày Đăng:</strong> {{ blog.data_pubblic }}</p>
+    <p><strong>Vị Trí:</strong> {{ blog.position }}</p>
+  </div>
 </div>
+

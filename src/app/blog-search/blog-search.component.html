@@ -1,44 +1,39 @@
-<!-- <div id="blogs">
-  <h4>Search Blogs</h4> 
-  <input #searchBox (keyup)="search(searchBox.value)" /> 
-  <ul class="blogs">
-    <li *ngFor="let blog of blogs$ | async" class="blogListItem">
-      <a routerLink="/detail/{{blog.id}}">
-        {{blog.title}}
-      </a>
-    </li>
-  </ul>
-</div> -->
-<div class="blog-management">
-  <h2>Search Blogs</h2>
-  <input #searchBox (keyup)="search(searchBox.value)" />
-  <h2>List Blogs</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Tin</th>
-        <th>Loại</th>
-        <th>Trạng thái</th>
-        <th>Vị trí</th>
-        <th>Ngày pubblic</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let blog of blogs$ | async" class="blogListItem">
-        <td>{{ blog.id }}</td>
-        <td><a routerLink="/detail/{{blog.id}}" style="text-decoration: none;">{{blog.title}}</a></td>
-        <td>{{ blog.category }}</td>
-        <td>{{ blog.public ? 'Yes' : 'No' }}</td>
-        <td>{{ blog.position}}</td>
-        <td>{{ blog.data_pubblic }}</td>
-        <td><button><a routerLink="/edit/{{blog.id}}" style="text-decoration: none; color: aliceblue;">Edit</a></button></td>
-        <td><button title="delete_blog"
-          (click)="delete(blog.id)">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <div class="menu">
+    <app-app-menu></app-app-menu>
+  </div>
+  <div class="blog-management">
+    <h2>Search Blogs</h2>
+    <input #searchBox (keyup)="search(searchBox.value)" />
+    <h2>List Blogs</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tin</th>
+          <th>Loại</th>
+          <th>Trạng thái</th>
+          <th>Vị trí</th>
+          <th>Ngày pubblic</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let blog of blogs$ | async" class="blogListItem">
+          <td>{{ blog.id }}</td>
+          <td><a routerLink="/detail/{{blog.id}}" style="text-decoration: none;">{{blog.title}}</a></td>
+          <td>{{ blog.category }}</td>
+          <td>{{ blog.public ? 'Yes' : 'No' }}</td>
+          <td>{{ blog.position}}</td>
+          <td>{{ blog.data_pubblic }}</td>
+          <td><button><a routerLink="/edit/{{blog.id}}" style="text-decoration: none; color: aliceblue;">Edit</a></button></td>
+          <td><button title="delete_blog"
+            (click)="delete(blog.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
 

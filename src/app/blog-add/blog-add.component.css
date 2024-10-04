@@ -1,5 +1,5 @@
 .add-blog {
-  max-width: 600px;
+  width: 80%;
   margin: 20px auto; /* Căn giữa và thêm khoảng cách */
   padding: 20px; /* Thêm khoảng cách bên trong */
   border: 1px solid #ccc; /* Đường viền xung quanh */
@@ -73,4 +73,12 @@
   justify-content: center; /* Căn giữa các nút */
   width: 100%; /* Chiều rộng 100% */
   margin-top: 20px; /* Khoảng cách bên trên */
+}
+.container {
+  display: flex;
+  width: 100%;
+}
+.menu {
+  width: 20%;
+  padding: 10px;
 }

@@ -73,8 +73,7 @@ import { Blog } from '../../models/blog';
 import { BlogService } from '../blog.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router'; 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { title } from 'process';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-blog-add',
@@ -132,7 +131,8 @@ export class BlogAddComponent implements OnInit {
     }
 
     const newBlog: Blog = {
-      ...this.blogForm.value   
+      ...this.blogForm.value,
+      thumbs: this.blog.thumbs 
     };
 
     this.blogService.addBlog(newBlog)
@@ -148,7 +148,23 @@ export class BlogAddComponent implements OnInit {
       });
   }
   clearForm(): void {
-    this.blog = new Blog(); 
+    // Đặt lại form về trạng thái ban đầu
+    this.blogForm.reset({
+      title: '',
+      des: '',
+      detail: '',
+      category: '',
+      public: '',
+      data_pubblic: '',
+      position: '',
+      thumbs: ''
+    });
+  
+    // Xóa tệp đã chọn
     this.selectedFile = null;
+  
+    // Đặt lại đối tượng blog
+    this.blog = new Blog();
   }
+  
 }
