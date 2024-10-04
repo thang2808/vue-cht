@@ -15,6 +15,8 @@ const httpOptions = {
 export class BlogService {
 
   private blogsURL ='http://localhost:3100/blogs';
+  //USE mockApi
+  // private blogsURL='https://66fe42532b9aac9c997b08f5.mockapi.io/blogs';
 
   getBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>(this.blogsURL).pipe(
@@ -57,6 +59,7 @@ export class BlogService {
   }
 
   /* GET blogs whose title contains searched string */
+  //mock thi dung title=... con json thi dung title_like=...
   searchBlogs(typedString: string): Observable<Blog[]> {
     if (!typedString.trim()) {     
       return of([]);

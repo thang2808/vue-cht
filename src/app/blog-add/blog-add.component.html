@@ -1,25 +1,37 @@
 <div *ngIf="blog" class="add-blog">
   <h2>New Blogs</h2>
-  <form (ngSubmit)="addBlog()" #blogForm="ngForm">
+  <form [formGroup]="blogForm" (ngSubmit)="addBlog()">
     <div>
       <label for="title"><h5>Tiêu đề</h5></label>
-      <input type="text" id="title" [(ngModel)]="blog.title" name="title" required>
+      <input type="text" formControlName="title" required>
+      <div *ngIf="blogForm.get('title').invalid && blogForm.get('title').touched">
+        <small class="text-danger">Tiêu đề là bắt buộc.</small>
+      </div>
     </div>
     <div>
-      <label for="des"><h5>Mô tả ngắn</h5></label>
-      <textarea id="des" [(ngModel)]="blog.des" name="des" required></textarea>
+      <label for="des">Mô tả:</label>
+      <input id="des" formControlName="des" required>
+      <div *ngIf="blogForm.get('des').invalid && blogForm.get('des').touched">
+        <small class="text-danger">Mô tả là bắt buộc.</small>
+      </div>
     </div>
+
     <div>
-      <label for="detail"><h5>Chi tiết</h5></label>
-      <textarea id="detail" [(ngModel)]="blog.detail" name="detail" required></textarea>
+      <label for="detail">Chi tiết:</label>
+      <textarea id="detail" formControlName="detail" required></textarea>
+      <div *ngIf="blogForm.get('detail').invalid && blogForm.get('detail').touched">
+        <small class="text-danger">Chi tiết là bắt buộc.</small>
+      </div>
     </div>
+
     <div>
       <label for="thumbs"><h5>Hình ảnh</h5></label>
-      <input type="file" id="thumbs" (change)="onFileSelected($event)">
+      <input type="file" id="thumbs" formControlName="thumbs" (change)="onFileSelected($event)">
     </div>
+
     <div>
       <label for="category"><h5>Loại</h5></label>
-      <select id="category" [(ngModel)]="blog.category" name="category">
+      <select id="category" formControlName="category" name="category">
         <option value="Thời sự">Thời sự</option>
         <option value="Thế giới">Thế giới</option>
         <option value="Kinh doanh">Kinh doanh</option>
@@ -30,7 +42,7 @@
     </div>
     <div>
       <label for="position"><h5>Vị Trí</h5></label>
-      <select id="position" [(ngModel)]="blog.position" name="position">
+      <select id="position" formControlName="position" name="position">
         <option value="Việt Nam">Việt Nam</option>
         <option value="Châu Á">Châu Á</option>
         <option value="Châu Âu">Châu Âu</option>
@@ -41,17 +53,17 @@
       <label for="public"><h5>Public</h5></label>
       <div class="public-options">
         <label for="publicYes">Yes</label>
-        <input type="radio" id="publicYes" [(ngModel)]="blog.public" name="public" [value]="true">
+        <input type="radio" id="publicYes" formControlName="public" name="public" [value]="true">
         <label for="publicNo">No</label>
-        <input type="radio" id="publicNo" [(ngModel)]="blog.public" name="public" [value]="false">
+        <input type="radio" id="publicNo" formControlName="public" name="public" [value]="false">
       </div>
     </div>
     <div>
       <label for="data_pubblic"><h5>Ngày Đăng</h5></label>
-      <input type="date" id="data_pubblic" [(ngModel)]="blog.data_pubblic" name="data_pubblic">
+      <input type="date" id="data_pubblic" formControlName="data_pubblic" name="data_pubblic">
     </div> 
     <div class="button-container">
-      <button type="submit">Lưu</button>
+      <button type="submit" [disabled]="blogForm.invalid">Lưu</button>
       <button type="button" (click)="clearForm()">Clear</button>
     </div>
   </form>

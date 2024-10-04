@@ -15,6 +15,11 @@ import { AppRoutingModule } from './/app-routing.module';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { BlogAddComponent } from './blog-add/blog-add.component';
 import { BlogSearchComponent } from './blog-search/blog-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
+// Import NG-ZORRO modules
+import { NgZorroAntdModule, NZ_I18N } from 'ng-zorro-antd'; // Chỉ cần import NZ_I18N
+import { registerLocaleData } from '@angular/common';
+import vi from '@angular/common/locales/vi';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,9 @@ import { BlogSearchComponent } from './blog-search/blog-search.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgZorroAntdModule,
+    ReactiveFormsModule
   ],
   providers: [
     BlogService
