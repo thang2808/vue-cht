@@ -47,7 +47,7 @@ export class BlogEditComponent implements OnInit {
     this.blogService.getBlogFromId(id).subscribe(blog => 
       {
         this.blog = { ...blog};
-        this.originalBlog = { ...blog};
+        this.originalBlog = JSON.parse(JSON.stringify(blog));
         this.blogForm.patchValue(this.blog); 
       });
   }
@@ -57,6 +57,7 @@ export class BlogEditComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.blog.thumbs = e.target.result;
+      this.blogForm.patchValue({ thumbs: this.blog.thumbs });
     };
     reader.readAsDataURL(this.selectedFile);
   }
@@ -92,15 +93,20 @@ export class BlogEditComponent implements OnInit {
   }
 
   clearForm(): void {
-    // Khôi phục lại trạng thái ban đầu của blog
-    this.blog = { ...this.originalBlog };
+    if (this.originalBlog) {
+      // Đặt lại giá trị của form về originalBlog
+      this.blogForm.reset(this.originalBlog);
 
-    // Xóa tệp đã chọn
-    this.selectedFile = null;
+      // Đặt lại this.blog về originalBlog
+      this.blog = JSON.parse(JSON.stringify(this.originalBlog));
 
-    // Đặt lại phần tử input file
-    if (this.fileInput) {
-      this.fileInput.nativeElement.value = '';
+      // Xóa tệp đã chọn
+      this.selectedFile = null;
+
+      // Đặt lại phần tử input file
+      if (this.fileInput) {
+        this.fileInput.nativeElement.value = '';
+      }
     }
   }
 }

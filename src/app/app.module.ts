@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { AppPageComponent } from './app-page/app-page.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AppMenuComponent } from './app-menu/app-menu.component';
@@ -24,7 +23,6 @@ import vi from '@angular/common/locales/vi';
 @NgModule({
   declarations: [
     AppComponent,
-    AppPageComponent,
     AppHeaderComponent,
     AppFooterComponent,
     AppMenuComponent,
